@@ -1,3 +1,10 @@
+/*
+ * @Description: 
+ * @Author: jianguo
+ * @Date: 2022-05-06 09:18:32
+ * @LastEditors: jianguo
+ * @LastEditTime: 2022-08-06 20:09:38
+ */
 const CONTENT_INFO = {
   island: {
     h1: "Never Stop",

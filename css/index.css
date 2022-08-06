@@ -1,0 +1,265 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+:root {
+  --main-desktop-font-size: 30px;
+  --main-desktop-change-font-size: calc(--main-desktop-font-size) * 4.8/6;
+  --main-border-color: #111;
+  --main-bgc-color: #333;
+  --main-text-color: #fff;
+  --screen-padding-tb: 30px;
+  --screen-padding-lf: 100px;
+  --screen-change-padding-tb: 10px;
+  --screen-change-paading-lf: 30px;
+  --video-overlay-island-color: #054f7199;
+  --video-overlay-spring-color: #054f716d;
+  --video-overlay-summer-color: #054f714e;
+  --video-overlay-winner-color: #1098d785;
+  --main-box-max-width: 1920px;
+  --text-h1-size: 2.8em;
+  --text-h2-size: 2.2em;
+  --text-p-size: 1rem;
+  --text-h1-change-size: 2em;
+  --text-h2-change-size: 1.7em;
+  --text-p-change-size: 1rem;
+  --menu-width: 10em;
+  --main-box-left: 2em;
+  --menu-margin-bottom: 1em;
+  --main-color:rgb(92, 172, 247);
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-user-drag: none;
+}
+
+a {
+  text-decoration: none;
+  color: var(--main-text-color);
+}
+
+html,
+body {
+  all: unset;
+  width: 100vw;
+  height: 100vh;
+  font-family: "Poppins", sans-serif;
+}
+
+.main-box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100vh;
+  max-width: var(--main-box-max-width);
+  display: flex;
+  z-index: 1;
+  font-size: var(--main-desktop-font-size);
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  user-select: none;
+  transition: 0.5s;
+  transform: perspective(5000px) translateX(0px) translateY(0) translateZ(0) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+}
+.main-box.active {
+  width: calc(100% - var(--menu-width) - var(--main-box-left));
+  height: calc(100vh - 2 * var(--main-box-left));
+  top: var(--main-box-left);
+  right: var(--menu-width);
+  left: var(--main-box-left);
+  bottom: var(--main-box-left);
+  overflow: hidden;
+  border-radius: 10px;
+  transform: perspective(5000px) translateX(0px) translateY(0) translateZ(0) rotateX(0deg) rotateY(20deg) rotateZ(0deg);
+}
+.main-box header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--screen-padding-tb) var(--screen-padding-lf);
+  transition: 0.5s;
+}
+.main-box header .logo {
+  transition: 0.3s;
+}
+.main-box header .logo:hover {
+  transform: scale(1.2);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+.main-box header .menu-logo {
+  width: 30px;
+  height: 30px;
+  background: url("/src/icons/menu.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 30px;
+  filter: invert(1);
+}
+.main-box header .menu-logo:hover {
+  border: 3px solid #111;
+  border-radius: 50%;
+  animation: menu_logo ease-in 1s infinite;
+}
+.main-box header .menu-logo.active {
+  background-repeat: no-repeat;
+  background-position: center;
+  background: url("/src/icons/close.svg");
+  background-size: 30px;
+}
+.main-box .content {
+  width: 100%;
+  color: var(--main-text-color);
+  padding: var(--screen-padding-tb) var(--screen-padding-lf);
+  transition: 0.5s;
+}
+.main-box .content video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  clip-path: ellipse(0% 0% at 0% 50%);
+  z-index: -1;
+}
+.main-box .content video.active {
+  clip-path: ellipse(150% 70% at 0% 50%);
+}
+.main-box .content .video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+.main-box .content h1 {
+  margin: 0;
+  padding: 0;
+  font-size: var(--text-h1-size);
+  line-height: 1em;
+}
+.main-box .content h2 {
+  margin: 0;
+  padding: 0;
+  font-size: var(--text-h2-size);
+  line-height: 1em;
+}
+.main-box .content p {
+  margin: 0;
+  padding: 0;
+  font-size: var(--text-p-size);
+  line-height: 1.5em;
+  min-width: 300px;
+  max-width: 700px;
+  margin: 3em 0;
+}
+.main-box .content .aside-menu a, .main-box .content a {
+  display: inline-block;
+  border: 2px solid #fff;
+  padding: 10px 30px;
+  line-height: 1em;
+  letter-spacing: 2px;
+  border-radius: 20px;
+  box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.1), -1px -1px 8px rgba(255, 255, 255, 0.1);
+  transition: 0.3s;
+}
+.main-box .content .aside-menu a:hover, .main-box .content a:hover {
+  color: rgb(168, 168, 168);
+  letter-spacing: 4px;
+}
+.main-box footer {
+  width: 100%;
+  color: var(--main-text-color);
+  padding: var(--screen-padding-tb) var(--screen-padding-lf);
+  transition: 0.5s;
+  display: flex;
+  justify-content: flex-start;
+}
+.main-box footer a {
+  width: 30px;
+  transition: 0.3s;
+}
+.main-box footer a:not(:last-child) {
+  margin-right: 30px;
+}
+.main-box footer a:hover {
+  transform: translateY(-5px);
+}
+.main-box footer a img {
+  filter: invert(1);
+}
+
+.aside-menu {
+  font-size: var(--main-desktop-font-size);
+  line-height: 1em;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  position: absolute;
+  align-items: center;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: var(--menu-width);
+}
+.aside-menu a {
+  min-width: calc(var(--menu-width) * 2 / 3);
+  color: var(--main-color);
+}
+.aside-menu a:not(:last-child) {
+  margin-bottom: var(--menu-margin-bottom);
+}
+.aside-menu a:hover {
+  letter-spacing: 5px;
+}
+
+@media (max-width: 1200px) {
+  .main-box {
+    font-size: var(--main-desktop-change-font-size);
+  }
+  .main-box header {
+    padding: var(--screen-change-padding-tb) var(--screen-change-paading-lf);
+  }
+  .main-box header .menu-logo {
+    width: 30px;
+    height: 30px;
+    background-size: 25px;
+  }
+  .main-box .content {
+    padding: var(--screen-change-padding-tb) var(--screen-change-paading-lf);
+  }
+  .main-box .content .text-description h1 {
+    font-size: var(--text-h1-change-size);
+    line-height: 1em;
+  }
+  .main-box .content .text-description h2 {
+    font-size: var(--text-h2-change-size);
+    line-height: 1em;
+  }
+  .main-box .content .text-description p {
+    font-size: var(--text-p-change-size);
+    min-width: 300px;
+    max-width: 500px;
+    line-height: 1.3em;
+  }
+  .main-box footer {
+    padding: 10px 30px;
+    padding: var(--screen-change-padding-tb) var(--screen-change-paading-lf);
+  }
+  .main-box footer a img {
+    width: 25px;
+  }
+}
+@keyframes menu_logo {
+  from, to {
+    filter: invert(1);
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+}/*# sourceMappingURL=index.css.map */
