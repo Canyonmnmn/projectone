@@ -9,10 +9,11 @@
   --screen-padding-lf: 100px;
   --screen-change-padding-tb: 10px;
   --screen-change-paading-lf: 30px;
-  --video-overlay-island-color: #054f7199;
-  --video-overlay-spring-color: #054f716d;
+  --video-overlay-island-color: #054f712a;
+  --video-overlay-spring-color: #054f712d;
   --video-overlay-summer-color: #054f714e;
-  --video-overlay-winner-color: #1098d785;
+  --video-overlay-autumn-color:#054f713a;
+  --video-overlay-winner-color: #1098d752;
   --main-box-max-width: 1920px;
   --text-h1-size: 2.8em;
   --text-h2-size: 2.2em;
@@ -23,7 +24,7 @@
   --menu-width: 10em;
   --main-box-left: 2em;
   --menu-margin-bottom: 1em;
-  --main-color:rgb(92, 172, 247);
+  --main-color: rgb(92, 172, 247);
 }
 
 * {
@@ -72,7 +73,7 @@ body {
   bottom: var(--main-box-left);
   overflow: hidden;
   border-radius: 10px;
-  transform: perspective(5000px) translateX(0px) translateY(0) translateZ(0) rotateX(0deg) rotateY(20deg) rotateZ(0deg);
+  transform: perspective(5000px) translateX(0px) translateY(0) translateZ(0) rotateX(0deg) rotateY(30deg) rotateZ(0deg);
 }
 .main-box header {
   width: 100%;
@@ -124,6 +125,7 @@ body {
   object-fit: cover;
   clip-path: ellipse(0% 0% at 0% 50%);
   z-index: -1;
+  transition: 1s;
 }
 .main-box .content video.active {
   clip-path: ellipse(150% 70% at 0% 50%);
@@ -135,6 +137,21 @@ body {
   width: 100%;
   height: 100%;
   z-index: -1;
+}
+.main-box .content .video-overlay-island {
+  background-color: var(--video-overlay-island-color);
+}
+.main-box .content .video-overlay-spring {
+  background-color: var(--video-overlay-spring-color);
+}
+.main-box .content .video-overlay-summer {
+  background-color: var(--video-overlay-summer-color);
+}
+.main-box .content .video-overlay-autumn {
+  background-color: var(--video-overlay-autumn-color);
+}
+.main-box .content .video-overlay-winter {
+  background-color: var(--video-overlay-winter-color);
 }
 .main-box .content h1 {
   margin: 0;
@@ -157,7 +174,8 @@ body {
   max-width: 700px;
   margin: 3em 0;
 }
-.main-box .content .aside-menu a, .main-box .content a {
+.main-box .content .aside-menu a,
+.main-box .content a {
   display: inline-block;
   border: 2px solid #fff;
   padding: 10px 30px;
@@ -167,7 +185,8 @@ body {
   box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.1), -1px -1px 8px rgba(255, 255, 255, 0.1);
   transition: 0.3s;
 }
-.main-box .content .aside-menu a:hover, .main-box .content a:hover {
+.main-box .content .aside-menu a:hover,
+.main-box .content a:hover {
   color: rgb(168, 168, 168);
   letter-spacing: 4px;
 }
@@ -209,48 +228,66 @@ body {
 .aside-menu a {
   min-width: calc(var(--menu-width) * 2 / 3);
   color: var(--main-color);
+  border: 2px solid var(--main-color);
+  padding: 10px 30px;
+  text-align: center;
+  border-radius: 30px;
+  transition: 0.3s;
+  text-transform: uppercase;
 }
 .aside-menu a:not(:last-child) {
   margin-bottom: var(--menu-margin-bottom);
 }
 .aside-menu a:hover {
-  letter-spacing: 5px;
+  background-color: var(--main-color);
+  color: #fff;
+  letter-spacing: 4px;
+  box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.2);
 }
 
 @media (max-width: 1200px) {
-  .main-box {
+  .aside-menu,
+.main-box {
     font-size: var(--main-desktop-change-font-size);
   }
-  .main-box header {
+  .aside-menu header,
+.main-box header {
     padding: var(--screen-change-padding-tb) var(--screen-change-paading-lf);
   }
-  .main-box header .menu-logo {
+  .aside-menu header .menu-logo,
+.main-box header .menu-logo {
     width: 30px;
     height: 30px;
     background-size: 25px;
   }
-  .main-box .content {
+  .aside-menu .content,
+.main-box .content {
     padding: var(--screen-change-padding-tb) var(--screen-change-paading-lf);
   }
-  .main-box .content .text-description h1 {
+  .aside-menu .content .text-description h1,
+.main-box .content .text-description h1 {
     font-size: var(--text-h1-change-size);
     line-height: 1em;
   }
-  .main-box .content .text-description h2 {
+  .aside-menu .content .text-description h2,
+.main-box .content .text-description h2 {
     font-size: var(--text-h2-change-size);
     line-height: 1em;
   }
-  .main-box .content .text-description p {
+  .aside-menu .content .text-description p,
+.main-box .content .text-description p {
     font-size: var(--text-p-change-size);
     min-width: 300px;
     max-width: 500px;
     line-height: 1.3em;
   }
-  .main-box footer {
+  .aside-menu footer,
+.main-box footer {
     padding: 10px 30px;
     padding: var(--screen-change-padding-tb) var(--screen-change-paading-lf);
   }
-  .main-box footer a img {
+  .aside-menu footer a img,
+.main-box footer a img {
     width: 25px;
   }
 }

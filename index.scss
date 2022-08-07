@@ -11,10 +11,11 @@
     --screen-padding-lf: 100px;
     --screen-change-padding-tb: 10px;
     --screen-change-paading-lf: 30px;
-    --video-overlay-island-color: #054f7199;
-    --video-overlay-spring-color: #054f716d;
+    --video-overlay-island-color: #054f712a;
+    --video-overlay-spring-color: #054f712d;
     --video-overlay-summer-color: #054f714e;
-    --video-overlay-winner-color: #1098d785;
+    --video-overlay-autumn-color:#054f713a;
+    --video-overlay-winner-color: #1098d752;
     --main-box-max-width: 1920px;
     --text-h1-size: 2.8em;
     --text-h2-size: 2.2em;
@@ -25,7 +26,7 @@
     --menu-width: 10em;
     --main-box-left: 2em;
     --menu-margin-bottom: 1em;
-    --main-color:rgb(92, 172, 247);
+    --main-color: rgb(92, 172, 247);
 
 }
 
@@ -71,8 +72,8 @@ body {
     transition: 0.5s;
     transform: perspective(5000px) translateX(0px) translateY(0) translateZ(0) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
 
-    &.active{
-        width: calc(100% - var(--menu-width) -  var(--main-box-left));
+    &.active {
+        width: calc(100% - var(--menu-width) - var(--main-box-left));
         height: calc(100vh - 2 * var(--main-box-left));
         top: var(--main-box-left);
         right: var(--menu-width);
@@ -80,7 +81,7 @@ body {
         bottom: var(--main-box-left);
         overflow: hidden;
         border-radius: 10px;
-        transform: perspective(5000px) translateX(0px) translateY(0) translateZ(0) rotateX(0deg) rotateY(20deg) rotateZ(0deg);
+        transform: perspective(5000px) translateX(0px) translateY(0) translateZ(0) rotateX(0deg) rotateY(30deg) rotateZ(0deg);
     }
 
     header {
@@ -120,7 +121,7 @@ body {
                 background-repeat: no-repeat;
                 background-position: center;
                 background: url('/src/icons/close.svg');
-                background-size:30px;
+                background-size: 30px;
 
             }
         }
@@ -142,6 +143,7 @@ body {
             object-fit: cover;
             clip-path: ellipse(0% 0% at 0% 50%);
             z-index: -1;
+            transition: 1s;
 
             &.active {
                 clip-path: ellipse(150% 70% at 0% 50%);
@@ -155,8 +157,23 @@ body {
             width: 100%;
             height: 100%;
             z-index: -1;
-        }
 
+        }
+        .video-overlay-island{
+            background-color: var(--video-overlay-island-color);
+        }
+        .video-overlay-spring{
+            background-color: var(--video-overlay-spring-color);
+        }
+        .video-overlay-summer{
+            background-color: var(--video-overlay-summer-color);
+        }
+        .video-overlay-autumn{
+            background-color: var(--video-overlay-autumn-color);
+        }
+        .video-overlay-winter{
+            background-color: var(--video-overlay-winter-color);
+        }
         h1 {
             margin: 0;
             padding: 0;
@@ -181,7 +198,8 @@ body {
             margin: 3em 0;
         }
 
-        .aside-menu a,a {
+        .aside-menu a,
+        a {
             display: inline-block;
             border: 2px solid #fff;
             padding: 10px 30px;
@@ -240,20 +258,33 @@ body {
     right: 0;
     bottom: 0;
     width: var(--menu-width);
-    
-    a{ 
+
+    a {
         min-width: calc(var(--menu-width) * 2 / 3);
         color: var(--main-color);
-        &:not(:last-child){
+        border: 2px solid var(--main-color);
+        padding: 10px 30px;
+        text-align: center;
+        border-radius: 30px;
+        transition: 0.3s;
+        text-transform: uppercase;
+
+        &:not(:last-child) {
             margin-bottom: var(--menu-margin-bottom);
         }
-        &:hover{
-            letter-spacing: 5px;
+
+        &:hover {
+            background-color: var(--main-color);
+            color: #fff;
+            letter-spacing: 4px;
+            box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.2);
         }
     }
 }
 
 @media (max-width:1200px) {
+
+    .aside-menu,
     .main-box {
         font-size: var(--main-desktop-change-font-size);
 
@@ -304,7 +335,7 @@ body {
             }
         }
     }
-    
+
 }
 
 @keyframes menu_logo {
